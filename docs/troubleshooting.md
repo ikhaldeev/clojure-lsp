@@ -126,3 +126,12 @@ in your `coc-settings.json` the line `disableDiagnostics` set to
 ## MacOS
 
 In some version of MacOS, Apple restrict the binary to run, to fix that run: `xattr -d com.apple.quarantine /path/to/clojure-lsp`
+
+### Every minute or so request to lsp takes 5 seconds
+Please check if you also see `UnknownHost` in every line in `clojure-lsp.out`. If that is the case then:
+
+Add MacOS hostname to /etc/hosts
+```
+sudo sed -i bak "s^127\.0\.0\.1.*^127.0.0.1 localhost $(hostname)^g" /etc/hosts
+sudo sed -i bak "s^::1.*^::1 localhost $(hostname)^g" /etc/hosts
+```
